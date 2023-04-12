@@ -24,7 +24,7 @@
 
 	<!-- <form action ="/temp/insert.do" method="post" name="tempVO"> -> 원래 있던 것 지금은 주석처리-->
 	<form action="${actionUrl}" method="post" name="tempVO">
-		<input type="hidden" name="tempId" value="${reslut.tempId}"/>
+		<input type="hidden" name="tempId" value="${result.tempId}"/>
 		<label for="tempVal"> 값 정보 : </label>
 		<input type="text" id="tempVal" name="tempVal" value="${result.tempVal }"/>
 		<br/>

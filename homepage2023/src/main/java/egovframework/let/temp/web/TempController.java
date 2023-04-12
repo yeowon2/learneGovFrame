@@ -28,7 +28,7 @@ public class TempController {
 		model.addAttribute("result", result);
 		return "temp/TempSelect";
 	}	
-		// 헤이헤이 이런이런 엄청나 대단해 헤헤헤헿헤헿 
+
 	
 	//임시데이터 목록 가져오기 
 	@RequestMapping(value = "/temp/selectList.do")
@@ -61,7 +61,33 @@ public class TempController {
 		return "forward:/temp/selectList.do";
 	}
 	
+	//임시데이터 수정하기
+	@RequestMapping(value="/temp/update.do")
+	public String update(TempVO tempVO, HttpServletRequest request) throws Exception{
+		tempService.updateTemp(tempVO);
+		return "forward:/temp/selectList.do";
+	}
 	
+	//임시데이터 삭제하기
+	@RequestMapping(value="/temp/delete.do")
+	public String delete(TempVO tempVO, HttpServletRequest request) throws Exception{
+		tempService.deleteTemp(tempVO);
+		return "forward:/temp/selectList.do";
+	}
+	
+	//JSTL
+	@RequestMapping(value="/temp/jstl.do")
+	public String jstl(TempVO searchVO, HttpServletRequest request, ModelMap model) throws Exception {
+		
+		return "/temp/Jstl";
+	}
+	
+	//JSTL c:import용
+	@RequestMapping(value="/temp/jstlImport.do")
+	public String jstlImport(TempVO searchVO, HttpServletRequest request, ModelMap model) throws Exception {
+		
+		return "/temp/JstlImport";
+	}
 	
 	}
 
