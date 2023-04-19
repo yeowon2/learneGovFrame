@@ -5,3 +5,4 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 Import 확인!
+<c:out value="${param.test}"/>
