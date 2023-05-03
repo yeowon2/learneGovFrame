@@ -64,7 +64,7 @@
 	
 	<delete id="deleteCrud" parameterType="egovframework.let.crud.service.CrudVO">
 		DELETE FROM letcrud 
-		WHERE CRUD_ID = 'CRUD_X0001'
+		WHERE CRUD_ID = #{crudId}
 	</delete>
 	
 </mapper>
