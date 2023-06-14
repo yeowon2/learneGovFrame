@@ -208,7 +208,7 @@ public class EgovImageProcessController extends HttpServlet {
     				if("jpg".equals(EgovStringUtil.lowerCase(fileExt))) {
     					type = "image/jpeg";
     				}else {
-    					type = "imgae/" + EgovStringUtil.lowerCase(fileExt);
+    					type = "image/" + EgovStringUtil.lowerCase(fileExt);
     				}
     			}else {
     				LOGGER.debug("Image fileType is null.");
