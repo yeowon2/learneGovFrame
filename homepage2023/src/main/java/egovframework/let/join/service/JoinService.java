@@ -1,10 +1,8 @@
 package egovframework.let.join.service;
 
-import java.util.List;
-
-import egovframework.rte.psl.dataaccess.util.EgovMap;
-
 public interface JoinService {
 
-	
+	public int duplicateCheck(JoinVO vo) throws Exception;
+
+	public String insertJoin(JoinVO vo) throws Exception;
 }

@@ -62,7 +62,14 @@
 			</tr>
 			<tr>
 				<th><strong class="star">*</strong><label for="passwordHint">비밀번호 힌트</label></th>
-				<td><input type="text" id="passwordHint" name="passwordHint" required /></td>
+				<td>
+					<select id="passwordHint" name="passwordHint" required>
+						<option value="1">취미 생활은?</option>
+						<option value="2">출신 초등학교 이름은?</option>
+						<option value="3">취직하고 싶은 곳은?</option>
+						<option value="4">여행가고 싶은 곳은?</option>
+					</select>
+				</td>
 			</tr>
 			<tr> 
 				<th><strong class="star">*</strong><label for="passwordCnsr">비밀번호 정답</label></th>
@@ -97,11 +104,11 @@ $(document).ready(function(){
 		
 		if(emplyrId){
 			$.ajax({
-				url : "/join/duplicatCheck.do",
+				url : "/join/duplicateCheck.do",
 				type : "post",
 				data : {"emplyrId" : emplyrId},
 				dataType : "json",
-				success :function(data){
+				success : function(data){
 					if(data.successYn == "Y"){
 						alert("사용가능한 ID입니다.")
 						$("#idCheckAt").val("Y");
@@ -112,7 +119,7 @@ $(document).ready(function(){
 				}, error : function(){
 					alert("error");
 				}
-			})
+			});
 		}else{
 			alert("ID를 입력해주세요.")
 		}
@@ -130,10 +137,10 @@ $(document).ready(function(){
 // validation 체크
 function regist(){
 	// 아이디 중복 검사 체크
-	/* if($("#idCheckAt".val() !="Y")){
+	if($("#idCheckAt".val() !="Y")){
 		alert("아이디 중복 검사를 해주세요");
 		return false;
-	}else */ if(!$("#emplyrId").val()){
+	}else  if(!$("#emplyrId").val()){
 		alert("아이디를 입력해주세요.");
 		return false;
 	}else if(!$("#userNm").val()){
