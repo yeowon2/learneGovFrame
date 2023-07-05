@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.let.login.service.impl.LoginMapper">
+
+	<!-- 로그인 처리를 위한 resultMap -->
+	<resultMap  id="login" type="egovframework.com.cmm.LoginVO">
+		<result property="id" column="EMPLYR_ID"/>
+		<result property="name" column="USER_NM"/>
+		<!-- ihidNum는 주민등록번호 -->
+		<result property="ihidNum" column="IHIDNUM"/>
+		<result property="email" column="EMAIL_ADRES"/>
+		<result property="password" column="PASSWORD"/>
+		<!-- userSe는 사용자 구분 COLUMN과 property 같은 형태인거 맞음 -->
+		<result property="userSe" column="userSe"/>
+		<!-- orgnztId는 조직(부서)ID -->
+		<result property="orgnztId" column="ORGNZT_ID"/>
+		<!-- uniqId는 고유 아이디 -->
+		<result property="uniqId" column="ESNTL_ID"/>
+	</resultMap>
+	
+	<!-- 일반 로그인 -->
+	<select id="actionLogin" resultMap="login">
+		SELECT EMPLYR_ID
+			, USER_NM
+			, PASSWORD
+			, IHIDNUM
+			, EMAIL_ADRES
+			, 'USR' AS userSe
+			, ORGNZT_ID
+			, ESNTL_ID
+		FROM LETTNEMPLYRINFO
+		WHERE EMPLYR_ID = #{id}
+		 	AND PASSWORD = #{password}
+		 	AND EMPLYR_STTUS_CODE = 'P'
+		 	<!-- EMPLYR_STTUS_CODE는 사용자 상태코드 -->
+	</select>	 
+</mapper>
