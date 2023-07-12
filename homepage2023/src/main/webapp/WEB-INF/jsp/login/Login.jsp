@@ -42,7 +42,7 @@
 				<ul>
 					<li><p>회원으로 가입하시겠습니까?</p><a href="/join/siteUseAgree.do">회원가입</a></li>
 					<li><p>아이디를 찾고 싶으신가요?</p><a href="/member/findId.do">아이디 찾기</a></li>
-					<li><p>비밀번호를 찾고 싶으신가요?</p><a href="">비밀번호 찾기</a></li>
+					<li><p>비밀번호를 찾고 싶으신가요?</p><a href="/member/findPassword.do">비밀번호 찾기</a></li>
 				</ul>			
 			</div>
 		</div>
@@ -68,6 +68,7 @@ function checkGnrlLogin(frm){
 	}
 	
 	$("#frmGnrlLogin");
+}
 	
 $(document).ready(function(){
 	// 아이디 입력 창 포커스 설정

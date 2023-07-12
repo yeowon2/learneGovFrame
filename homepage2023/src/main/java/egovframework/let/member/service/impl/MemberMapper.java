@@ -1,18 +1,21 @@
 package egovframework.let.member.service.impl;
 
 
-import egovframework.let.join.service.JoinVO;
+import egovframework.let.member.service.MemberVO;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 
 //자바파일이 mapper를 annotation을 지정해주도록 적어야함
-@Mapper("joinMapper")
+@Mapper("memberMapper")
 
 public interface MemberMapper {
-	
-	// ID 중복체크
-	int duplicateCheck(JoinVO vo) throws Exception;
 
-	// 회원등록
-	void insertJoin(JoinVO vo) throws Exception;	
-	
+	// 회원ID찾기
+	MemberVO findId(MemberVO vo) throws Exception;
+
+	// 회원 비밀번호 찾기
+	MemberVO findPassword(MemberVO vo) throws Exception;
+
+	// 회원 비밀번호 업데이트
+	void passwordUpdate(MemberVO vo) throws Exception;
+
 }

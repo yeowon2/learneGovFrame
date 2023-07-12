@@ -64,11 +64,11 @@
 				<th><strong class="star">*</strong><label for="passwordHint">비밀번호 힌트</label></th>
 				<td>
 					<select id="passwordHint" name="passwordHint" required>
-					</select>
 						<option value="1">취미 생활은?</option>
 						<option value="2">출신 초등학교 이름은?</option>
 						<option value="3">취직하고 싶은 곳은?</option>
 						<option value="4">여행가고 싶은 곳은?</option>
+					</select>
 				</td>
 			</tr>
 			<tr> 

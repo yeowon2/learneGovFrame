@@ -17,21 +17,21 @@
 </head>
 <body>
 
-<h2 class="icon1">아이디 찾기</h2>
+<h2 class="icon1">비밀번호 찾기</h2>
 <p class="mB20">회원 가입 시 등록한 정보를 입력해주세요.</p>
 
 <div class="bg-area change_box">
-	<form id ="frm" name="frm" action="/member/findIdComplete.do" method="post" onsubmit="return checkForm(this)">
+	<form id ="frm" name="frm" action="/member/findPasswordRegist.do" method="post" onsubmit="return checkForm(this)">
 		<fieldset>
-			<legend>아이디 찾기 폼</legend>
+			<legend>비밀번호 찾기 폼</legend>
 			<div class="change_inp">
 				<div>
 					<label for="userNm">회원명</label>
 					<input type="text" name="userNm" class="inp" id="userNm">
 				</div>
 				<div>
-					<label for="emailAdres">이메일</label>
-					<input type="text" name="emailAdres" class="inp" id="emailAdres">
+					<label for="emplyrId">아이디</label>
+					<input type="text" name="emplyrId" class="inp" id="emplyrId">
 				</div>
 				<div>
 					<label for="passwordHint">힌트</label>
