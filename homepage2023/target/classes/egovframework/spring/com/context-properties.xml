@@ -18,6 +18,10 @@
 	        	<entry key="photoThumbHeight" value="140"/>
 	        	<entry key="imagePageUnit" value="12"/>
 	        	<entry key="imagePageSize" value="10"/>
+	        	
+	        	<entry key="mail.gmailUser" value="gudjlu04j@gmail.com"/>
+	        	<entry key="mail.gmailUserName" value="원원"/>
+	        	<entry key="mail.gmailUserPassword" value="ttyqurbstqygwknp"/>
 	        </map>
 		</property>
 	</bean>

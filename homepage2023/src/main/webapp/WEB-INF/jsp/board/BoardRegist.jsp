@@ -236,6 +236,7 @@ function regist(){
 		return false;
 	}
 }
+
 </script>
 </body>
 </html>
