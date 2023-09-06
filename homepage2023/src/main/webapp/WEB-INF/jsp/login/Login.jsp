@@ -36,6 +36,12 @@
 								<input type="password" id="pwd" name="password" value="" class="inp" title="비밀번호를 입력하세요." placeholder="비밀번호를를 입력하세요" autocomplete="off">
 							</span>
 							<button type="submit" class="btn-lg spot p10">로그인</button>
+							
+							<div class="btn-cont">
+								<a class="btn-kakao" href="#" data-type="login">
+									<img alt="카카오 로그인 버튼" src="http://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="200">
+								</a>
+							</div>
 						</fieldset>
 					</form>
 				</div>
@@ -74,6 +80,51 @@ $(document).ready(function(){
 	// 아이디 입력 창 포커스 설정
 	$('#id').focus();
 });
+</script>
+
+<form id="frmLogin" name="frmLogin" method="post" action="/login/actionLogin.do">
+	<input type="hidden" name="loginType" value=""/>
+	<input type="hidden" id="snsId" name="id"/>
+</form>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+$(document).ready(function(){
+	// 카카오 로그인 버튼
+	$(".btn-kakao").click(function(){
+		const type = $(this).data("type");
+		kakaoLogin(type);
+		return false;
+	});
+});
+
+//카카오 키 정보 입력 -> 아까 kakao api 만들어서 발급받은 JAVASCRIPT 키 입력
+Kakao.init('4d61a4dee6869326a4e7ec0e68f39f68');
+
+// 카카오 SDK 초기화
+Kakao.isInitialized();
+
+// 카카오로그인
+function kakaoLogin(type) {
+	Kakao.Auth.login({
+		success : function (response){
+			Kakao.API.request({
+				url : '/v2/user/me',
+				success : function(response){
+					console.log(response)
+					$("input[name=loginType]").val("KAKAO");
+					$("#snsId").val(response.id);
+					$("#frmLogin").submit();
+				},
+				fail : function(error){
+					console.log(error)
+				},
+			})
+		}, fail : function(error){
+			console.log(error)
+		},
+	})	
+}
 </script>
 
 </body>

@@ -20,6 +20,7 @@ import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
 import egovframework.let.join.service.JoinService;
 import egovframework.let.join.service.JoinVO;
+import egovframework.let.utl.fcc.service.EgovStringUtil;
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 import net.sf.json.JSONObject;
@@ -81,6 +82,17 @@ public class JoinController {
 	// 회원가입
 	@RequestMapping(value = "/join/insertMember.do")
 	public String insertMember(@ModelAttribute("searchVO") JoinVO vo, HttpServletRequest request, ModelMap model) throws Exception{
+		
+		if(!EgovStringUtil.isEmpty(vo.getLoginType())) {
+			// 일반가입을 제외하고는 ID 값은 SNS명 + '-' + SNS ID 값
+			if(!("normal").equals(vo.getLoginType())) {
+				vo.setEmplyrId(vo.getLoginType() + "-" + vo.getEmplyrId());
+				vo.setPassword("");
+				vo.setPasswordHint("SNS 가입자");
+				vo.setPasswordCnsr("SNS 가입자");
+			}
+		}
+		
 		
 		if(joinService.duplicateCheck(vo) > 0) {
 			model.addAttribute("message", egovMessageSource.getMessage("fail.duplicate.member"));
