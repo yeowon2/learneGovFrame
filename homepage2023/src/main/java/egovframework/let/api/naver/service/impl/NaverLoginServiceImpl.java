@@ -1,7 +1,6 @@
 package egovframework.let.api.naver.service.impl;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -88,19 +87,18 @@ public class NaverLoginServiceImpl extends EgovAbstractServiceImpl implements Na
 		return (String) session.getAttribute(SESSION_STATE);
 	}
 	
-//	Access Token을 이용하여 네이버 사용자 프로필 API를 호출
+	//	Access Token을 이용하여 네이버 사용자 프로필 API를 호출
 	public String getUserProfile(OAuth2AccessToken oauthToken) throws IOException{
-		
-		OkHttpClient client = new OkHttpClient().newBuilder().build();
-		Request request = new Request.Builder() // 여기서 Request는 okhttp3 를 받아주기
-				.url(PROFILE_API_URL)
-				.method("GET", null)
-				.addHeader("Content-Type", "application/x-www-form-urlencoded")
-				.addHeader("Authorization", "Bearer" + oauthToken.getAccessToken())
-				.build();
+    	
+    	OkHttpClient client = new OkHttpClient().newBuilder().build();
+		Request request = new Request.Builder()
+		  .url(PROFILE_API_URL)
+		  .method("GET", null)
+		  .addHeader("Content-Type", "application/x-www-form-urlencoded")
+		  .addHeader("Authorization", "Bearer " + oauthToken.getAccessToken())
+		  .build();
 		Response response = client.newCall(request).execute();
 		
 		return response.body().string();
-				
-	}
+    }
 }

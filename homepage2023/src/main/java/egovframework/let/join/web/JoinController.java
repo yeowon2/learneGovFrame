@@ -18,6 +18,7 @@ import com.mysql.fabric.Response;
 
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.LoginVO;
+import egovframework.let.api.naver.service.NaverLoginService;
 import egovframework.let.join.service.JoinService;
 import egovframework.let.join.service.JoinVO;
 import egovframework.let.utl.fcc.service.EgovStringUtil;
@@ -34,6 +35,9 @@ public class JoinController {
 	@Resource(name = "egovMessageSource")
 	EgovMessageSource egovMessageSource;
 	
+	@Resource(name = "naverLoginService")
+	private NaverLoginService naverLoginService;
+	
 	// 약관 동의
 	@RequestMapping(value="/join/siteUseAgree.do")
 	public String siteUseAgree(@ModelAttribute("searchVO") JoinVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
@@ -44,6 +48,12 @@ public class JoinController {
 	// 회원 구분
 	@RequestMapping(value="/join/memberType.do")
 	public String memberType(@ModelAttribute("searchVO") JoinVO vo, HttpServletRequest request, ModelMap model, HttpSession session) throws Exception{
+		
+		// Naver
+		String domain = request.getServerName();
+		String port = Integer.toString(request.getServerPort());
+		String naverAuthUrl = naverLoginService.getAuthorizationUrl(session, domain, port);
+		model.addAttribute("naverAuthUrl", naverAuthUrl);
 		
 		return "join/MemberType";
 	}
