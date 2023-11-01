@@ -21,7 +21,7 @@ public class ReservationVO extends ComDefaultVO implements Serializable {
 	// 운영종료일
 	private String useEndDt;
 	// 운영시작시간
-	private String UseBeginTime;
+	private String useBeginTime;
 	// 운영종료시간
 	private String useEndTime;
 	// 내용
@@ -97,10 +97,10 @@ public class ReservationVO extends ComDefaultVO implements Serializable {
 		this.useEndDt = useEndDt;
 	}
 	public String getUseBeginTime() {
-		return UseBeginTime;
+		return useBeginTime;
 	}
 	public void setUseBeginTime(String useBeginTime) {
-		UseBeginTime = useBeginTime;
+		this.useBeginTime = useBeginTime;
 	}
 	public String getUseEndTime() {
 		return useEndTime;
