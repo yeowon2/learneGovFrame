@@ -129,7 +129,7 @@
 			
 			<c:if test="${not empty USER_INFO.id}">
 				<div class="btn-cont ar">
-			    	<a href="/admin/rsv/rsvRegist.do" class="btn spot">신청내역 확인</a>
+			    	<a href="/rsv/selectApplyList.do" class="btn spot">신청내역 확인</a>
 				</div>
 			</c:if>
 		</div>

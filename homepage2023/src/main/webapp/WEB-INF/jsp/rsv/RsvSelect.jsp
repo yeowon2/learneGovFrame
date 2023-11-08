@@ -80,7 +80,7 @@
 					</dl>
 					<dl class="info_view2">
 						<dt>작성자ID</dt>
-						<dd><c:out value="${frstRegisterId.recNm}"/></dd>
+						<dd><c:out value="${frstRegisterId.frstRegisterId}"/></dd>
 						<dt>작성일</dt>
 						<dd><fmt:formatDate value="${result.frstRegistPnttm}" pattern="yyyy-MM-dd"/></dd>
 					</dl>
@@ -145,7 +145,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type : "POST",
-			url : "rsv/rsvCheck.json",
+			url : "/rsv/rsvCheck.json",
 			data : {"resveId" : "${searchVO.resveId}"},
 			dataType : "json",
 			success : function(result){
