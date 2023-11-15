@@ -22,6 +22,9 @@
 	        	<entry key="mail.gmailUser" value="gudjlu04j@gmail.com"/>
 	        	<entry key="mail.gmailUserName" value="원원"/>
 	        	<entry key="mail.gmailUserPassword" value="ttyqurbstqygwknp"/>
+	        	
+	        	<!-- 예약자 업로드 올리는 경로 -->
+	        	<entry key="rsvFileStorePath" value="${Globals.File}/upload/rsv"/>
 	        </map>
 		</property>
 	</bean>

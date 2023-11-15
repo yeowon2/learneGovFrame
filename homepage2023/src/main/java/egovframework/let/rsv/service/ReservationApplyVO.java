@@ -27,7 +27,7 @@ public class ReservationApplyVO extends ReservationVO implements Serializable {
 	// 반려사유 
 	private String returnResn;
 	// 승인일자
-	private java.util.Date confmPntt;
+	private java.util.Date confmPnttm;
 	// 등록IP
 	private String creatIp;
 	// 사용여부
@@ -108,11 +108,11 @@ public class ReservationApplyVO extends ReservationVO implements Serializable {
 	public void setReturnResn(String returnResn) {
 		this.returnResn = returnResn;
 	}
-	public java.util.Date getConfmPntt() {
-		return confmPntt;
+	public java.util.Date getConfmPnttm() {
+		return confmPnttm;
 	}
-	public void setConfmPntt(java.util.Date confmPntt) {
-		this.confmPntt = confmPntt;
+	public void setConfmPnttm(java.util.Date confmPnttm) {
+		this.confmPnttm = confmPnttm;
 	}
 	public String getCreatIp() {
 		return creatIp;
@@ -187,6 +187,5 @@ public class ReservationApplyVO extends ReservationVO implements Serializable {
 		this.reqsttempId = reqsttempId;
 	}
 	
-	
-	
-}
+
+	}
