@@ -104,6 +104,18 @@
 					<c:url var="listUrl" value="/admin/rsv/rsvSelectList.do${_BASE_PARAM}"/>
 				    <a href="${listUrl}" class="btn">목록</a>
 				</div>
+				
+				<div class="excelUploadBox">
+					<form id ="excelForm" name="excelForm" action="/admin/rsv/excelUpload.json" enctype="multipart/form-data" method="post">
+						<input type="hidden" name="resveId" id="resveId" value="${param.resveId}" />
+						<input type="hidden" name="resveDe" value="TYPE01"/>
+						
+						<a href="/excel/rqtExcel_sample.xls" class="btn" download>엑셀 업로드 샘플 다운로드</a>
+						<br/>
+						<label for="registerExcelFile">파일첨부</label><input type="file" id="registerExcelFile" name="registerExcelFile" class="upload-hidden">
+						<a href="#" id="excelReg" class="btn btn_blue">등록</a>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -121,6 +133,47 @@ $(".btn-del").click(function(){
 		return false;
 	}
 });
+
+$(document).on('click', '#excelReg', function(e){
+	if($('#registerExcelFile').val()== ''){
+		alert('파일을 등록해주세요.');
+		return false;
+	}
+	
+	var form = new FormData($('#excelForm')[0]);
+	var url = $('#excelForm').attr('action');
+	
+	$.ajax({
+		url:url,
+		type:'POST',
+		data:form,
+		async:false,
+		cache:false,
+		contentType:false,
+		processData:false,
+		dataType:'json'
+		,success:function(result){
+			var message ="";
+			
+			if(result.success){
+				$('#excel').hide();
+				window.location.reload();
+			} else {
+				// alert(result.message);
+				for(i=0; i<result.data.length; i++){
+					if(i != 0 ){
+						message += "\n";
+					}
+					message += result.data[i].userId + " : " + result.data[i].message;
+				}
+				alert(message);
+				window.location.reload();
+			}
+		}
+	});
+	return false;
+});
+
 </script>
 
 </body>
